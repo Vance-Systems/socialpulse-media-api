@@ -1,0 +1,67 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SocialPulse - Universal Social Media & Video Stream Extractor API",
+    "description": "Extract direct MP4 video streams without watermark, audio tracks, and full post telemetry from TikTok, YouTube Shorts, Instagram Reels, and Twitter/X.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://socialpulse-media-api.onrender.com",
+      "description": "Production Cloud Server"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "responses": {
+          "200": {
+            "description": "Service Operational"
+          }
+        }
+      }
+    },
+    "/v1/extract": {
+      "get": {
+        "summary": "Extract Video & Audio Without Watermark",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL of the TikTok, YouTube, Instagram or X post"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Media extracted successfully"
+          }
+        }
+      }
+    },
+    "/v1/platforms": {
+      "get": {
+        "summary": "List Supported Social Platforms",
+        "responses": {
+          "200": {
+            "description": "Supported platforms"
+          }
+        }
+      }
+    },
+    "/v1/batch-extract": {
+      "post": {
+        "summary": "Batch Extract Social Media Posts",
+        "responses": {
+          "200": {
+            "description": "Batch extraction results"
+          }
+        }
+      }
+    }
+  }
+}
